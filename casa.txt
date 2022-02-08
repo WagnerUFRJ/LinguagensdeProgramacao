@@ -1,0 +1,8 @@
+Configuração: casa 
+5 unidade(s) || Biscoito ||  R$ 2,00 ||  Categoria: Comida ||  Limite: 27
+
+5 unidade(s) || Bolacha ||  R$ 2,00 ||  Categoria: Comida ||  Limite: 5
+Configuração: casa Configuração: casa Configuração: casa Configuração: casa 
+6 unidade(s) || biscoito2 ||  R$ 3,00 ||  Categoria: comida ||  Limite: 1
+
+5 unidade(s) || biscoito3 ||  R$ 1,00 ||  Categoria: comida ||  Limite: 1
