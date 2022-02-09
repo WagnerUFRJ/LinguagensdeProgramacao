@@ -102,7 +102,7 @@ class Organizador:
     def confg(self, event3):
         janela2 = Tk()
         janela2.title("Itens")
-        janela2.geometry("650x650")
+        janela2.geometry("700x650")
         janela2.minsize(585,400)
 
         self.container[5] = Frame(janela2)
@@ -137,7 +137,7 @@ class Organizador:
         self.quadro = LabelFrame(self.container[5], text = "Lista de Itens", borderwidth = 10, height=10)
         self.quadro.pack(fill="both", expand="no", padx=10,pady=10)
         self.quadro3 = LabelFrame(self.container[5], text = "Opções", borderwidth = 5, height=10)
-        self.quadro3.pack(fill="both", expand="no", padx=10,pady=10)
+        self.quadro3.pack(fill="both", expand="yes", padx=10,pady=10)
 
         self.grade = ttk.Treeview(self.quadro,
                                   columns=('id', 'produto', 'quantidade', 'especificação', 'valor', 'limite'),
@@ -212,13 +212,13 @@ class Organizador:
         self.itemLimite.pack(side=TOP)
 
         self.inserir1 = Button(self.quadro2, text="Inserir",
-                               command=lambda: [hide_button(self.quadro2),self.arquivo1(), self.lbl.pack_forget(), self.lbl2.pack_forget(),
+                               command=lambda: [show_button(self.quadro3),show_button(self.botao_falta),show_button(self.botao_mod),show_button(self.dele),show_button(self.inserir2),
+                                                hide_button(self.quadro2),self.arquivo1(), self.lbl.pack_forget(), self.lbl2.pack_forget(),
                                                 self.lbl3.pack_forget(), self.lbl4.pack_forget(),
                                                 self.lbl5.pack_forget(), self.item.pack_forget(),
                                                 self.itemQuant.pack_forget(), self.itemCategoria.pack_forget(),
                                                 self.itemPreco.pack_forget(), self.itemLimite.pack_forget(),
-                                                hide_button(self.inserir1), show_button(self.botao_mod),
-                                                show_button(self.inserir2), show_button(self.dele),show_button(self.quadro3), show_button(self.botao_falta),
+                                                hide_button(self.inserir1),
                                                 self.novalista()])
         self.inserir1.pack(side=TOP)
 

@@ -6,4 +6,11 @@ Configuração: Casa
 10 unidade(s) || Refri ||  R$ 7,00 ||  Categoria: Bebida ||  Limite: 2
 Configuração: Casa Configuração: Casa 
 30 unidade(s) || Pão ||  R$ 0,5 ||  Categoria: Comida ||  Limite: 10
-Configuração: Casa Configuração: Casa Configuração: Casa 
+Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa 
+22 unidade(s) || Sorvete ||  R$ 18,00 ||  Categoria: Comida ||  Limite: 5
+Configuração: Casa 
+50 unidade(s) || Manteiga ||  R$ 7,00 ||  Categoria: Comida ||  Limite: 10
+Configuração: Casa 
+15 unidade(s) || SucoB ||  R$ 3,00 ||  Categoria: Bebida ||  Limite: 5
+Configuração: Casa Configuração: Casa 
+50 unidade(s) || Nescau ||  R$ 5,00 ||  Categoria: Bebida ||  Limite: 12

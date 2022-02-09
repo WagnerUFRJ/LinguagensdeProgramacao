@@ -18,10 +18,10 @@ class Itens:
         banco.conexao.commit()
         c.close()
     
-    def deleteItem(self):
+    def deleteItem(iditem):
         banco = BancoItens()
         c = banco.conexao.cursor()
-        comando = "delete from itens where iditens = "+self.iditem
+        comando = "delete from itens where iditens = "+iditem
         c.execute(comando)
         banco.conexao.commit()
         c.close()
