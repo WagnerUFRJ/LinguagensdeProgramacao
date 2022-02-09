@@ -14,3 +14,9 @@ Configuração: Casa
 15 unidade(s) || SucoB ||  R$ 3,00 ||  Categoria: Bebida ||  Limite: 5
 Configuração: Casa Configuração: Casa 
 50 unidade(s) || Nescau ||  R$ 5,00 ||  Categoria: Bebida ||  Limite: 12
+Configuração: Casa Configuração: Casa Configuração: Casa 
+50 unidade(s) || Toddy ||  R$ 4,00 ||  Categoria: Bebida ||  Limite: 10
+Configuração: Casa 
+50 unidade(s) || Toddy ||  R$ 4,00 ||  Categoria: bebida ||  Limite: 
+Configuração: Casa 
+50 unidade(s) || toddy ||  R$ 4,00 ||  Categoria: bebida ||  Limite: 12

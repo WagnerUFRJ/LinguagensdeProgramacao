@@ -40,10 +40,10 @@ class Itens:
             self.limite = elemento[5]
         c.close()
     
-    def updateItens(self):
+    def updateItens(self,iditem):
         banco = BancoItens()
         c = banco.conexao.cursor()
-        comando = "update itens set produto = '" + self.produto +"', quantidade = '" + str(self.quantidade) +"', categoria = '"+self.categoria+"', preco = '" +self.preco+"', limite = '" +str(self.limite)+"'where iditem = "+self.iditem+""
+        comando = "update itens set produto = '" + self.produto +"', quantidade = '" + str(self.quantidade) +"', categoria = '"+self.categoria+"', preco = '" +self.preco+"', limite = '" +str(self.limite)+"'where iditem = "+iditem+""
         c.execute(comando)
         banco.conexao.commit()
         c.close()

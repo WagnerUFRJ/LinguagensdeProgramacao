@@ -5,6 +5,10 @@ from turtle import left, width
 from Itens import Itens
 from Banco import BancoItens
 
+
+global i 
+i = 0
+
 # Função para esconder os widgets
 def hide_button(widget):
     widget.pack_forget()
@@ -162,7 +166,7 @@ class Organizador:
         self.botao_falta.pack(side=RIGHT)
 
         self.botao_mod = Button(self.quadro3, text="Modifique",
-                           command=lambda: self.modificar())
+                           command=lambda: self.infmodificar())
         self.botao_mod.pack(side=RIGHT)
 
         self.dele = Button(self.quadro3, text="Delete",
@@ -241,6 +245,17 @@ class Organizador:
         elif self.itemQuant.get() < self.itemLimite.get():
             messagebox.showinfo("AVISO!!!!!", "Sua quantidade está crítica, repor estoque imediatamente!!!!")
 
+    def Updatelista(self):
+        Itens.updateItens(self.selecionado2,self.idselecionado2)
+        self.grade.delete(*self.grade.get_children())
+        tabelaBanco = Itens.populaItens()
+        for i in tabelaBanco:
+            self.grade.insert("", "end", value=i)
+        if self.itemQuant.get() == self.itemLimite.get():
+            messagebox.showinfo("AVISO!!!!!", "Seu limite foi atingido, repor estoque imediatamente!!!!")
+        elif self.itemQuant.get() < self.itemLimite.get():
+            messagebox.showinfo("AVISO!!!!!", "Sua quantidade está crítica, repor estoque imediatamente!!!!")        
+
 
     def deletar(self):
         idselecionado = -1
@@ -250,8 +265,74 @@ class Organizador:
         Itens.deleteItem(idselecionado)
         self.grade.delete(selecionado)
     
-    def modificar():
+    def modificar(self):
         pass
+        
+        #valores = self.grade.item(selecionado, "values")
+        #self.lblmod = Label(self.container[6], text= "Digite o ID do item que você quer modificar")
+        #self.lblmod.pack(side=TOP)
+        #self.infmod = Entry(self.container[6])
+        #self.infmod.pack(side=BOTTOM)                                        
+        #self.botmod = Button(self.container[7], text="Modificar", command=lambda: [hide_button(self.lblmod),hide_button(self.botmod),
+        #                                                                           hide_button(self.infmod),self.infmodificar()])
+        #self.botmod.pack(side=BOTTOM) 
+
+   
+    def infmodificar(self):
+
+        hide_button(self.quadro3)
+        hide_button(self.botao_mod)
+        hide_button(self.botao_falta)
+        hide_button(self.inserir2) 
+        hide_button(self.dele)
+
+        self.idselecionado2 = -1
+        self.selecionado2 = self.grade.selection()[0]
+        valores2 = self.grade.item(self.selecionado2, "values")
+        self.idselecionado2 = valores2[0]
+
+        self.quadro2 = LabelFrame(self.container[6], text = "Insira seu Item")
+        self.quadro2.pack(fill="both", expand="yes", padx=10,pady=10)
+
+        self.lbl = Label(self.quadro2, text="Insira o nome do item")
+        self.lbl.pack(side=TOP)
+        self.item = Entry(self.quadro2)
+        self.item.pack(side=TOP)
+
+        self.lbl2 = Label(self.quadro2, text="Insira a quantidade")
+        self.lbl2.pack(side=TOP)
+        self.itemQuant = Spinbox(self.quadro2, from_=0, to=999, wrap=True)
+        self.itemQuant.pack(side=TOP)
+
+        self.lbl3 = Label(self.quadro2, text="Insira a categoria")
+        self.lbl3.pack(side=TOP)
+        self.itemCategoria = Entry(self.quadro2)
+        self.itemCategoria.pack(side=TOP)
+
+        self.lbl4 = Label(self.quadro2, text="Insira o preço")
+        self.lbl4.pack(side=TOP)
+        self.itemPreco = Entry(self.quadro2)
+        self.itemPreco.pack(side=TOP)
+
+        self.lbl5 = Label(self.quadro2, text="Insira limite")
+        self.lbl5.pack(side=TOP)
+        self.itemLimite = Entry(self.quadro2)
+        self.itemLimite.pack(side=TOP)
+
+        self.inserir1 = Button(self.quadro2, text="Inserir",
+                               command=lambda: [show_button(self.quadro3),show_button(self.botao_falta),show_button(self.botao_mod),show_button(self.dele),show_button(self.inserir2),
+                                                hide_button(self.quadro2),self.arquivo1(), self.lbl.pack_forget(), self.lbl2.pack_forget(),
+                                                self.lbl3.pack_forget(), self.lbl4.pack_forget(),
+                                                self.lbl5.pack_forget(), self.item.pack_forget(),
+                                                self.itemQuant.pack_forget(), self.itemCategoria.pack_forget(),
+                                                self.itemPreco.pack_forget(), self.itemLimite.pack_forget(),
+                                                hide_button(self.inserir1),
+                                                self.Updatelista()])
+        self.inserir1.pack(side=TOP)
+        
+          
+        
+        
 
 
     def itens_faltando(self):
