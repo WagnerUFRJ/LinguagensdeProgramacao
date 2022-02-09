@@ -1,4 +1,0 @@
-Configuração: casa 
-11 unidade(s) || Biscoito ||  R$ 2,00 ||  Categoria: Comida ||  Limite: 5
-Configuração: casa 
-10 unidade(s) || Suco ||  R$ 2,00 ||  Categoria: Bebida ||  Limite: 3

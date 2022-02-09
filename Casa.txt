@@ -1,0 +1,9 @@
+Configuração: Casa 
+5 unidade(s) || Bolo  ||  R$ 10,00 ||  Categoria: Comida ||  Limite: 1
+Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa Configuração: Casa 
+10 unidade(s) || Refri ||  R$ 7,00 ||  Categoria: Bebida ||  Limite: 2
+Configuração: Casa 
+10 unidade(s) || Refri ||  R$ 7,00 ||  Categoria: Bebida ||  Limite: 2
+Configuração: Casa Configuração: Casa 
+30 unidade(s) || Pão ||  R$ 0,5 ||  Categoria: Comida ||  Limite: 10
+Configuração: Casa Configuração: Casa Configuração: Casa 

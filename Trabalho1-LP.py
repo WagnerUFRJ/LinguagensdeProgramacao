@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+from turtle import left, width
 from Itens import Itens
 from Banco import BancoItens
 
@@ -101,7 +102,7 @@ class Organizador:
     def confg(self, event3):
         janela2 = Tk()
         janela2.title("Itens")
-        janela2.geometry("650x400")
+        janela2.geometry("650x650")
         janela2.minsize(585,400)
 
         self.container[5] = Frame(janela2)
@@ -133,22 +134,12 @@ class Organizador:
         self.container[11]["pady"] = 5
         self.container[11].pack()
 
-        self.botao_falta = Button(self.container[6], text="Itens Faltando",
-                           command=lambda: self.itens_faltando())
-        self.botao_falta.pack(side=BOTTOM)
+        self.quadro = LabelFrame(self.container[5], text = "Lista de Itens", borderwidth = 10, height=10)
+        self.quadro.pack(fill="both", expand="no", padx=10,pady=10)
+        self.quadro3 = LabelFrame(self.container[5], text = "Opções", borderwidth = 5, height=10)
+        self.quadro3.pack(fill="both", expand="no", padx=10,pady=10)
 
-        self.dele = Button(self.container[6], text="Delete",
-                           command=lambda: [self.deletar()])
-        self.dele.pack(side=BOTTOM)
-
-        self.lbl0 = Label(self.container[6], text="Insira seus itens:")
-        self.lbl0.pack(side=LEFT)
-        self.inserir2 = Button(self.container[6], text="+",
-                               command=lambda: [hide_button(self.botao_falta),hide_button(self.inserir2), hide_button(self.dele),
-                                                hide_button(self.lbl0), self.inserir()])
-        self.inserir2.pack(side=RIGHT)
-
-        self.grade = ttk.Treeview(self.container[5],
+        self.grade = ttk.Treeview(self.quadro,
                                   columns=('id', 'produto', 'quantidade', 'especificação', 'valor', 'limite'),
                                   show='headings')
         self.grade.column('id', minwidth=0, width=50)
@@ -165,6 +156,25 @@ class Organizador:
         self.grade.heading('limite', text="Limite Mínimo")
         self.grade.pack()
 
+        
+        self.botao_falta = Button(self.quadro3, text="Itens Faltando",
+                           command=lambda: self.itens_faltando())
+        self.botao_falta.pack(side=RIGHT)
+
+        self.botao_mod = Button(self.quadro3, text="Modifique",
+                           command=lambda: self.modificar())
+        self.botao_mod.pack(side=RIGHT)
+
+        self.dele = Button(self.quadro3, text="Delete",
+                           command=lambda: [self.deletar()])
+        self.dele.pack(side=RIGHT)
+
+        self.inserir2 = Button(self.quadro3, text="Insira",
+                               command=lambda: [hide_button(self.quadro3),hide_button(self.botao_mod),hide_button(self.botao_falta),hide_button(self.inserir2), hide_button(self.dele),
+                                                self.inserir()])
+        self.inserir2.pack(side=RIGHT)
+
+    
         #Laço para inserir ao treeview os itens do banco ao abrir a janela2
         tabelaBanco = Itens.populaItens()
         for i in tabelaBanco:
@@ -173,41 +183,44 @@ class Organizador:
         janela2.mainloop()
 
     def inserir(self):
-        self.lbl = Label(self.container[6], text="Insira o nome do item")
-        self.lbl.pack(side=BOTTOM)
-        self.item = Entry(self.container[6])
-        self.item.pack(side=BOTTOM)
+        self.quadro2 = LabelFrame(self.container[6], text = "Insira seu Item")
+        self.quadro2.pack(fill="both", expand="yes", padx=10,pady=10)
 
-        self.lbl2 = Label(self.container[7], text="Insira a quantidade")
-        self.lbl2.pack(side=BOTTOM)
-        self.itemQuant = Spinbox(self.container[7], from_=0, to=999, wrap=True)
-        self.itemQuant.pack(side=BOTTOM)
+        self.lbl = Label(self.quadro2, text="Insira o nome do item")
+        self.lbl.pack(side=TOP)
+        self.item = Entry(self.quadro2)
+        self.item.pack(side=TOP)
 
-        self.lbl3 = Label(self.container[8], text="Insira a categoria")
-        self.lbl3.pack(side=BOTTOM)
-        self.itemCategoria = Entry(self.container[8])
-        self.itemCategoria.pack(side=BOTTOM)
+        self.lbl2 = Label(self.quadro2, text="Insira a quantidade")
+        self.lbl2.pack(side=TOP)
+        self.itemQuant = Spinbox(self.quadro2, from_=0, to=999, wrap=True)
+        self.itemQuant.pack(side=TOP)
 
-        self.lbl4 = Label(self.container[9], text="Insira o preço")
-        self.lbl4.pack(side=BOTTOM)
-        self.itemPreco = Entry(self.container[9])
-        self.itemPreco.pack(side=BOTTOM)
+        self.lbl3 = Label(self.quadro2, text="Insira a categoria")
+        self.lbl3.pack(side=TOP)
+        self.itemCategoria = Entry(self.quadro2)
+        self.itemCategoria.pack(side=TOP)
 
-        self.lbl5 = Label(self.container[10], text="Insira limite")
-        self.lbl5.pack(side=BOTTOM)
-        self.itemLimite = Entry(self.container[10])
-        self.itemLimite.pack(side=BOTTOM)
+        self.lbl4 = Label(self.quadro2, text="Insira o preço")
+        self.lbl4.pack(side=TOP)
+        self.itemPreco = Entry(self.quadro2)
+        self.itemPreco.pack(side=TOP)
 
-        self.inserir1 = Button(self.container[11], text="Inserir",
-                               command=lambda: [self.arquivo1(), self.lbl.pack_forget(), self.lbl2.pack_forget(),
+        self.lbl5 = Label(self.quadro2, text="Insira limite")
+        self.lbl5.pack(side=TOP)
+        self.itemLimite = Entry(self.quadro2)
+        self.itemLimite.pack(side=TOP)
+
+        self.inserir1 = Button(self.quadro2, text="Inserir",
+                               command=lambda: [hide_button(self.quadro2),self.arquivo1(), self.lbl.pack_forget(), self.lbl2.pack_forget(),
                                                 self.lbl3.pack_forget(), self.lbl4.pack_forget(),
                                                 self.lbl5.pack_forget(), self.item.pack_forget(),
                                                 self.itemQuant.pack_forget(), self.itemCategoria.pack_forget(),
                                                 self.itemPreco.pack_forget(), self.itemLimite.pack_forget(),
-                                                hide_button(self.inserir1), show_button(self.lbl0),
-                                                show_button(self.inserir2), show_button(self.dele), show_button(self.botao_falta),
+                                                hide_button(self.inserir1), show_button(self.botao_mod),
+                                                show_button(self.inserir2), show_button(self.dele),show_button(self.quadro3), show_button(self.botao_falta),
                                                 self.novalista()])
-        self.inserir1.pack(side=BOTTOM)
+        self.inserir1.pack(side=TOP)
 
     def arquivo1(self):
         with open("{}.txt".format(self.entrada.get()), "a") as arquivo:
@@ -230,13 +243,21 @@ class Organizador:
 
 
     def deletar(self):
+        idselecionado = -1
         selecionado = self.grade.selection()[0]
+        valores = self.grade.item(selecionado, "values")
+        idselecionado = valores[0]
+        Itens.deleteItem(idselecionado)
         self.grade.delete(selecionado)
+    
+    def modificar():
+        pass
+
 
     def itens_faltando(self):
         janela3 = Tk()
         janela3.title("Itens Faltando")
-        janela3.geometry("585x400")
+        janela3.geometry("650x650")
         janela3.minsize(585, 400)
 
         self.container[12] = Frame(janela3)
