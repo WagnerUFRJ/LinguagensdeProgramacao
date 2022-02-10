@@ -246,7 +246,7 @@ class Organizador:
             messagebox.showinfo("AVISO!!!!!", "Sua quantidade está crítica, repor estoque imediatamente!!!!")
 
     def Updatelista(self):
-        Itens.updateItens(self.selecionado2,self.idselecionado2)
+        Itens.updateItens(self.item.get(), self.itemQuant.get(), self.itemCategoria.get(), self.itemPreco.get(), self.itemLimite.get(),self.idselecionado2)
         self.grade.delete(*self.grade.get_children())
         tabelaBanco = Itens.populaItens()
         for i in tabelaBanco:
@@ -331,10 +331,6 @@ class Organizador:
         self.inserir1.pack(side=TOP)
         
           
-        
-        
-
-
     def itens_faltando(self):
         janela3 = Tk()
         janela3.title("Itens Faltando")
