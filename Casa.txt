@@ -34,3 +34,7 @@ Configuração: Casa
 0 unidade(s) || CocaCola ||  R$ 2,00 ||  Categoria: Bebida ||  Limite: 12
 Configuração: Casa 
 0 unidade(s) || CocaCola ||  R$ 8,00 ||  Categoria: Bebida ||  Limite: 12
+Configuração: Casa 
+30 unidade(s) || Suco ||  R$ 4,00 ||  Categoria: Bebida ||  Limite: 10
+Configuração: Casa 
+50 unidade(s) || Suco ||  R$ 4,00 ||  Categoria: Bebida ||  Limite: 12

@@ -1,10 +1,9 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
-from turtle import left, width
+from turtle import left, pd, width
 from Itens import Itens
 from Banco import BancoItens
-
 
 global i 
 i = 0
