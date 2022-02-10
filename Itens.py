@@ -1,4 +1,4 @@
-from Banco import BancoItens
+from Banco import BancoItens, ItensFaltando
 
 class Itens:
 
@@ -10,13 +10,21 @@ class Itens:
         self.preco = preco
         self.limite = limite
     
-    def insertItem(produto, quantidade, categoria, preco, limite):
-        banco = BancoItens()
-        c = banco.conexao.cursor()
-        comando = "insert into itens(produto, quantidade, categoria, preco, limite) values('"+ produto +"', '"+ str(quantidade) + "','"+ categoria +"','"+ preco +"','"+ str(limite) +"')"
-        c.execute(comando)
-        banco.conexao.commit()
-        c.close()
+    def insertItem(produto="", quantidade=int, categoria="", preco="", limite=int):
+        if int(quantidade) > 0:
+          banco = BancoItens()
+          c = banco.conexao.cursor()
+          comando = "insert into itens(produto, quantidade, categoria, preco, limite) values('"+ produto +"', '"+ str(quantidade) + "','"+ categoria +"','"+ preco +"','"+ str(limite) +"')"
+          c.execute(comando)
+          banco.conexao.commit()
+          c.close()
+        else:
+          banco = ItensFaltando()
+          c = banco.conexao.cursor()
+          comando = "insert into itensfaltando(produto, quantidade, categoria, preco, limite) values('"+ produto +"', '"+ str(quantidade) + "','"+ categoria +"','"+ preco +"','"+ str(limite) +"')"
+          c.execute(comando)
+          banco.conexao.commit()
+          c.close()    
     
     def deleteItem(iditem):
         banco = BancoItens()
@@ -66,4 +74,21 @@ class Itens:
                 lista[i][j]
         return lista
         
-    
+    def populaItensFalt():
+        lista = []
+        banco = ItensFaltando()
+        c = banco.conexao.cursor()
+        comando = "select * from itensfaltando "
+        c.execute(comando)
+        for elementos in c:
+
+            lista.append(elementos)
+            total_rows = len(lista)
+            total_columns = len(lista[0])
+
+        c.close()
+        for i in range(total_rows):
+            for j in range(total_columns):
+                lista[i][j]
+        return lista
+        

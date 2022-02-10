@@ -26,3 +26,11 @@ Configuração: Casa
 50 unidade(s) || Toddy ||  R$ 4,00 ||  Categoria: Bebida ||  Limite: 12
 Configuração: Casa 
 60 unidade(s) || Toddy ||  R$ 4,00 ||  Categoria: Bebida ||  Limite: 12
+Configuração: Casa Configuração: Casa Configuração: Casa 
+0 unidade(s) || Coca Cola ||  R$ 2,00 ||  Categoria: Bebida ||  Limite: 10
+Configuração: Casa 
+0 unidade(s) || Coca Cola ||  R$ 2,00 ||  Categoria: Bebida ||  Limite: 12
+Configuração: Casa 
+0 unidade(s) || CocaCola ||  R$ 2,00 ||  Categoria: Bebida ||  Limite: 12
+Configuração: Casa 
+0 unidade(s) || CocaCola ||  R$ 8,00 ||  Categoria: Bebida ||  Limite: 12

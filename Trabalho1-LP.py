@@ -235,15 +235,17 @@ class Organizador:
             arquivo.write(" || " + " Limite: " + self.itemLimite.get() + "\n")
 
     def novalista(self):
-        Itens.insertItem(self.item.get(), self.itemQuant.get(), self.itemCategoria.get(), self.itemPreco.get(), self.itemLimite.get())
-        self.grade.delete(*self.grade.get_children())
-        tabelaBanco = Itens.populaItens()
-        for i in tabelaBanco:
-            self.grade.insert("", "end", value=i)
-        if self.itemQuant.get() == self.itemLimite.get():
-            messagebox.showinfo("AVISO!!!!!", "Seu limite foi atingido, repor estoque imediatamente!!!!")
-        elif self.itemQuant.get() < self.itemLimite.get():
-            messagebox.showinfo("AVISO!!!!!", "Sua quantidade está crítica, repor estoque imediatamente!!!!")
+
+          Itens.insertItem(self.item.get(), self.itemQuant.get(), self.itemCategoria.get(), self.itemPreco.get(), self.itemLimite.get())
+          self.grade.delete(*self.grade.get_children())
+          tabelaBanco = Itens.populaItens()
+          for i in tabelaBanco:
+             self.grade.insert("", "end", value=i)
+          if self.itemQuant.get() == self.itemLimite.get():
+             messagebox.showinfo("AVISO!!!!!", "Seu limite foi atingido, repor estoque imediatamente!!!!")
+          elif self.itemQuant.get() < self.itemLimite.get():
+             messagebox.showinfo("AVISO!!!!!", "Sua quantidade está crítica, repor estoque imediatamente!!!!")
+
 
     def Updatelista(self):
         Itens.updateItens(self.item.get(), self.itemQuant.get(), self.itemCategoria.get(), self.itemPreco.get(), self.itemLimite.get(),self.idselecionado2)
@@ -265,19 +267,7 @@ class Organizador:
         Itens.deleteItem(idselecionado)
         self.grade.delete(selecionado)
     
-    def modificar(self):
-        pass
-        
-        #valores = self.grade.item(selecionado, "values")
-        #self.lblmod = Label(self.container[6], text= "Digite o ID do item que você quer modificar")
-        #self.lblmod.pack(side=TOP)
-        #self.infmod = Entry(self.container[6])
-        #self.infmod.pack(side=BOTTOM)                                        
-        #self.botmod = Button(self.container[7], text="Modificar", command=lambda: [hide_button(self.lblmod),hide_button(self.botmod),
-        #                                                                           hide_button(self.infmod),self.infmodificar()])
-        #self.botmod.pack(side=BOTTOM) 
-
-   
+    
     def infmodificar(self):
 
         hide_button(self.quadro3)
@@ -332,9 +322,10 @@ class Organizador:
         
           
     def itens_faltando(self):
+ 
         janela3 = Tk()
         janela3.title("Itens Faltando")
-        janela3.geometry("650x650")
+        janela3.geometry("700x650")
         janela3.minsize(585, 400)
 
         self.container[12] = Frame(janela3)
@@ -349,7 +340,10 @@ class Organizador:
         self.lb_titulo_janela3 = Label(self.container[12], text="Itens em Falta/Vendidos", font=('Arial', '10', 'bold'))
         self.lb_titulo_janela3.pack(side=TOP)
 
-        self.grade2 = ttk.Treeview(self.container[13],
+        self.quadro4 = LabelFrame(self.container[13], text = "Lista de Itens em Falta", borderwidth = 10, height=10)
+        self.quadro4.pack(fill="both", expand="no", padx=10,pady=10)
+
+        self.grade2 = ttk.Treeview(self.quadro4,
                                   columns=('id', 'produto', 'quantidade', 'especificação', 'valor', 'limite'),
                                   show='headings')
         self.grade2.column('id', minwidth=0, width=50)
@@ -366,6 +360,9 @@ class Organizador:
         self.grade2.heading('limite', text="Limite Mínimo")
         self.grade2.pack()
 
+        tabelaBanco2 = Itens.populaItensFalt()
+        for i in tabelaBanco2:
+            self.grade2.insert("", "end", value=i)   
 
 
 
